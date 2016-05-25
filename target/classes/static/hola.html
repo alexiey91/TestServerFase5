@@ -5,9 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div id="id"></div>
-<input type="button" onClick=prova()>
-<script>
+	<input type="button" onClick=prova()>
+	<script>
 
 var getJSON = function(url, callback) {
     var xhr = new XMLHttpRequest();
@@ -27,6 +26,7 @@ var putJSON = function(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open("post", url, true);
     xhr.responseType = "json";
+    xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
     xhr.onload = function() {
       var status = xhr.status;
       if (status == 200) {
@@ -35,21 +35,30 @@ var putJSON = function(url, callback) {
         callback(status);
       }
     };
-    var data = new FormData();
-    data.append('measurementGoalId', 'mg6');
-    data.append('description', 'adsgadgs');
-    data.append('creationDate', 'place');
+    var form=document.getElementById("form");
+    var data = {};
+    var arr= new Array();
+    var i,ii;
+    for (i = 0, ii = form.length; i < ii; ++i) {
+      var input = form[i];
+      if(i<=4){
+	      if (input.name) {
+	        data[input.name] =input.value;
+	        console.log(input.name);
+	      }
+	      }else if (input.value!= "")
+    	  arr.push(input.value);
+      	
+    }
+   if(arr.length!=0)
+    data["questionsRef"] =arr;
+   
+    console.log("array"+arr);
     
-    var json='{'+
-    '"measurementGoalId":"mg6",'+
-    '"description":"mg1descr",'+
-    '"creationDate":"12/10/2011",'+
-    '"lastModified":"12/10/2015",'+
-	'"timeFrame":"18/12/2015-19/06/2016",'+
-	'"questionsRef":["5742c61d44ae04b22a82cd65","5742c65344ae04b22a82cd66"]}';
-	
-	console.log(JSON.parse(json));
-    xhr.send(data);
+    var json=JSON.stringify(data);
+	console.log(json);
+	//console.log(JSON.parse(json));
+    xhr.send(json);
 };
 
 	function prova(){
@@ -65,19 +74,30 @@ var putJSON = function(url, callback) {
 			  } else {
 				  
 			    alert("Your query count: " + data.measurementGoals);
-			    for(var i in data.measurementGoals){
+/*			    for(var i in data.measurementGoals){
 			    	document.write("|id: " + data.measurementGoals[i].measurementGoalId + " descr : " + data.measurementGoals[i].description);
 			    	if(data.measurementGoals[i].questionsRef!=null)
 			    		document.write(" arr:"	+ data.measurementGoals[i].questionsRef.toString() + "|<br>");
 			    	else
 			    		document.write("|<br>");
 			    }
+			    */
 			  }
 			}
 		);
 	};
 </script>
+	<form id="form" method="post" onSubmit=prova()>
+		<input name="measurementGoalId" value="user" /> <input
+			name="description" value="pwd" /> <input name="creationDate"
+			value="organization" /> <input name="lastMofified"
+			value="requiredkey" /> <input name="timeFrame" value="requiredkey" />
+		<div>
+			<input name="0" value="5742c61d44ae04b22a82cd65" /> <input name="1"
+				value="5742c65344ae04b22a82cd66" />
+		</div>
 
+	</form>
 
 
 </body>

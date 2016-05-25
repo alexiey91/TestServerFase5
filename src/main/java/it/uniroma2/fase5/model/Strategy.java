@@ -1,65 +1,139 @@
 package it.uniroma2.fase5.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Strategy {
-	
+
 	@Id
-	private String id;
-	
-	private String name;
-	private String surname;
-	
+	private String strategyId;
+	private List<String> context;
+	private List<String> assumptions;
+	private String description;
+	private String creationDate;
+	private String lastModified;
+	private String timeFrame;
+	private int version;
+
 	@DBRef
-	private Problem problem;
-	
-	public Strategy(){
-			
-	}
-	
-	public Strategy(String name, String surname){
-		
-		this.name = name;
-		this.surname = surname;
-		
-	}
-	
-	public Strategy(String name, String surname, Problem problem){
-		
-		this.name = name;
-		this.surname = surname;
-		this.problem = problem;
-		
-	}
-	
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getSurname() {
-		return surname;
-	}
-	public void setSurname(String surname) {
-		this.surname = surname;
-	}
-	public Problem getProblem() {
-		return problem;
-	}
-	public void setProblem(Problem problem) {
-		this.problem = problem;
+	private List<Goal> goalRef;
+
+	public Strategy(String strategyId, List<String> context,
+			List<String> assumptions, String description, String creationDate,
+			String lastModified, String timeFrame, int version,
+			List<Goal> goalRef) {
+		super();
+		this.strategyId = strategyId;
+		this.context = context;
+		this.assumptions = assumptions;
+		this.description = description;
+		this.creationDate = creationDate;
+		this.lastModified = lastModified;
+		this.timeFrame = timeFrame;
+		this.version = version;
+		this.goalRef = goalRef;
 	}
 
-	public String getId() {
-		return id;
+	public List<Goal> getGoalRef() {
+		return goalRef;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setGoalRef(List<Goal> goalRef) {
+		this.goalRef = goalRef;
 	}
+
+	public Strategy() {
+
+	}
+
+	public Strategy(String strategyId) {
+
+		this.strategyId = strategyId;
+
+	}
+
+	public Strategy(String strategyId, List<String> context,
+			List<String> assumptions, String description, String creationDate,
+			String lastModified, String timeFrame, int version) {
+		super();
+		this.strategyId = strategyId;
+		this.context = context;
+		this.assumptions = assumptions;
+		this.description = description;
+		this.creationDate = creationDate;
+		this.lastModified = lastModified;
+		this.timeFrame = timeFrame;
+		this.version = version;
+	}
+
 	
+
+	public String getStrategyId() {
+		return strategyId;
+	}
+
+	public void setStrategyId(String strategyId) {
+		this.strategyId = strategyId;
+	}
+
+	public List<String> getContext() {
+		return context;
+	}
+
+	public void setContext(List<String> context) {
+		this.context = context;
+	}
+
+	public List<String> getAssumptions() {
+		return assumptions;
+	}
+
+	public void setAssumptions(List<String> assumptions) {
+		this.assumptions = assumptions;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(String creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public String getLastModified() {
+		return lastModified;
+	}
+
+	public void setLastModified(String lastModified) {
+		this.lastModified = lastModified;
+	}
+
+	public String getTimeFrame() {
+		return timeFrame;
+	}
+
+	public void setTimeFrame(String timeFrame) {
+		this.timeFrame = timeFrame;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
 }

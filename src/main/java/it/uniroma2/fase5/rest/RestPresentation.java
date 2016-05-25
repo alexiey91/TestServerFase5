@@ -1,23 +1,25 @@
 package it.uniroma2.fase5.rest;
 
+import it.uniroma2.fase5.controller.MeasurementGoalService;
+import it.uniroma2.fase5.controller.MetricService;
+import it.uniroma2.fase5.controller.ProblemService;
+import it.uniroma2.fase5.controller.QuestionService;
+import it.uniroma2.fase5.controller.StrategyService;
+import it.uniroma2.fase5.controller.StudentService;
+import it.uniroma2.fase5.model.rest.DTOMeasurementGoal;
+import it.uniroma2.fase5.model.rest.DTOMetric;
+import it.uniroma2.fase5.model.rest.DTOProblem;
+import it.uniroma2.fase5.model.rest.DTOQuestion;
+import it.uniroma2.fase5.model.rest.DTOStrategy;
+import it.uniroma2.fase5.model.rest.DTOStudent;
+import it.uniroma2.fase5.model.rest.DTOresponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import it.uniroma2.fase5.controller.MeasurementGoalService;
-import it.uniroma2.fase5.controller.MetricService;
-import it.uniroma2.fase5.controller.ProblemService;
-import it.uniroma2.fase5.controller.QuestionService;
-import it.uniroma2.fase5.controller.StudentService;
-import it.uniroma2.fase5.model.rest.DTOMeasurementGoal;
-import it.uniroma2.fase5.model.rest.DTOMetric;
-import it.uniroma2.fase5.model.rest.DTOProblem;
-import it.uniroma2.fase5.model.rest.DTOQuestion;
-import it.uniroma2.fase5.model.rest.DTOStudent;
-import it.uniroma2.fase5.model.rest.DTOresponse;
 
 @RestController
 @RequestMapping("/")
@@ -33,6 +35,8 @@ public class RestPresentation {
 	QuestionService questionService;
 	@Autowired
 	MeasurementGoalService measurementGoalService;
+	@Autowired
+	StrategyService strategyService;
 
 	@RequestMapping(value = "/getQuestions/", method = RequestMethod.GET)
 	public ResponseEntity<DTOresponse> getQuestions() {
@@ -134,7 +138,24 @@ public class RestPresentation {
 
 	}	
 
+	@RequestMapping(value = "/getStrategies/", method = RequestMethod.GET)
+	public ResponseEntity<DTOresponse> getStrategies() {
+		return strategyService.getStrategies();
+	}
 	
+	@RequestMapping(value = "/createStrategy/", method = RequestMethod.POST)
+	public ResponseEntity<DTOresponse> createtrategy(@RequestBody DTOStrategy dtoStrategy) {
+		
+		
+			return strategyService.createStrategy(dtoStrategy.getStrategyId(),dtoStrategy.getContext(),dtoStrategy.getAssumptions(),dtoStrategy.getDescription(),dtoStrategy.getCreationDate(),dtoStrategy.getLastModified(),dtoStrategy.getTimeFrame(),dtoStrategy.getVersion(),dtoStrategy.getGoalRef());
+	}
+	
+	@RequestMapping(value = "/deleteStrategy/", method = RequestMethod.POST)
+	public ResponseEntity<DTOresponse> deleteStrategy(@RequestBody DTOStrategy dtoStrategy ) {
+
+		return strategyService.deleteStrategy(dtoStrategy.getStrategyId());
+
+	}	
 	
 	
 }

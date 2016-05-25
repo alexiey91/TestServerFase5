@@ -9,6 +9,7 @@ import it.uniroma2.fase5.model.MeasurementGoal;
 import it.uniroma2.fase5.model.Metric;
 import it.uniroma2.fase5.model.Problem;
 import it.uniroma2.fase5.model.Question;
+import it.uniroma2.fase5.model.Strategy;
 import it.uniroma2.fase5.model.Student;
 
 public class DTOresponse extends DTO {
@@ -120,6 +121,9 @@ public class DTOresponse extends DTO {
 	private List<MeasurementGoal> measurementGoals;
 	
 	@JsonInclude(Include.NON_NULL)
+	private List<Strategy> strategies;
+	
+	@JsonInclude(Include.NON_NULL)
 	private String problemid;
 	
 	@JsonInclude(Include.NON_NULL)
@@ -130,6 +134,18 @@ public class DTOresponse extends DTO {
 	
 	@JsonInclude(Include.NON_NULL)
 	private String studentsurname;
+
+	public List<Strategy> getStrategies() {
+		return strategies;
+	}
+
+	public void setStrategies(List<Strategy> strategies) {
+		this.strategies = strategies;
+	}
+
+	
+
+	
 	
 	
 }

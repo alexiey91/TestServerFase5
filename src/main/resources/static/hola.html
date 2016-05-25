@@ -5,8 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<input type="button" onClick=prova()>
-<script>
+	<input type="button" onClick=prova()>
+	<script>
 
 var getJSON = function(url, callback) {
     var xhr = new XMLHttpRequest();
@@ -46,11 +46,13 @@ var putJSON = function(url, callback) {
 	        data[input.name] =input.value;
 	        console.log(input.name);
 	      }
-      }else
+	      }else if (input.value!= "")
     	  arr.push(input.value);
       	
     }
+   if(arr.length!=0)
     data["questionsRef"] =arr;
+   
     console.log("array"+arr);
     
     var json=JSON.stringify(data);
@@ -85,18 +87,17 @@ var putJSON = function(url, callback) {
 		);
 	};
 </script>
-<form id="form" method="post" onSubmit=prova()>
-    <input  name="measurementGoalId"   value="user" />
-    <input  name="description" value="pwd" />
-    <input  name="creationDate"    value="organization" />
-    <input  name="lastMofified"      value="requiredkey" />
-    <input  name="timeFrame"      value="requiredkey" />
-    <div>
-    	<input  name="0"      value="5742c61d44ae04b22a82cd65"/>
-    	<input  name="1"      value="5742c65344ae04b22a82cd66"/>
-    </div>
-    
-</form>
+	<form id="form" method="post" onSubmit=prova()>
+		<input name="measurementGoalId" value="user" /> <input
+			name="description" value="pwd" /> <input name="creationDate"
+			value="organization" /> <input name="lastMofified"
+			value="requiredkey" /> <input name="timeFrame" value="requiredkey" />
+		<div>
+			<input name="0" value="5742c61d44ae04b22a82cd65" /> <input name="1"
+				value="5742c65344ae04b22a82cd66" />
+		</div>
+
+	</form>
 
 
 </body>
