@@ -10,41 +10,46 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class MeasurementGoal {
 	
 	@Id
-	String measurementGoalId;
+	private String measurementGoalId;
    
-    String description;
-    String creationDate;
-    String lastModified;
-    String timeFrame;
+    private String description;
+    private String creationDate;
+    private String lastModified;
+    private String timeFrame;
+    private String interpretationModel;
     @DBRef
-    List<Question> questionsRef;
+    private List<Question> questionsRef;
+    @DBRef
+    private List<Metric> metricsRef;
+    
 	public MeasurementGoal(){
 			
 	}
 	
-	
 	public MeasurementGoal(String measurementGoalId, String description, String creationDate, String lastModified,
-			String timeFrame) {
+			String timeFrame, String interpretationModel, List<Question> questionsRef, List<Metric> metricsRef) {
 		super();
 		this.measurementGoalId = measurementGoalId;
 		this.description = description;
 		this.creationDate = creationDate;
 		this.lastModified = lastModified;
 		this.timeFrame = timeFrame;
-	}
-
-
-	public MeasurementGoal(String measurementGoalId, String description, String creationDate, String lastModified,
-			String timeFrame, List<Question> questionsRef) {
-		super();
-		this.measurementGoalId = measurementGoalId;
-		this.description = description;
-		this.creationDate = creationDate;
-		this.lastModified = lastModified;
-		this.timeFrame = timeFrame;
+		this.setInterpretationModel(interpretationModel);
 		this.questionsRef = questionsRef;
+		this.metricsRef = metricsRef;
 	}
-	
+
+
+	public MeasurementGoal(String measurementGoalId, String description, String creationDate, String lastModified,
+			String timeFrame, String interpretationModel) {
+		super();
+		this.measurementGoalId = measurementGoalId;
+		this.description = description;
+		this.creationDate = creationDate;
+		this.lastModified = lastModified;
+		this.timeFrame = timeFrame;
+		this.setInterpretationModel(interpretationModel);
+	}
 
 	public String getMeasurementGoalId() {
 		return measurementGoalId;
@@ -81,6 +86,20 @@ public class MeasurementGoal {
 	}
 	public void setQuestionsRef(List<Question> questionsRef) {
 		this.questionsRef = questionsRef;
+	}
+	public List<Metric> getMetricsRef() {
+		return metricsRef;
+	}
+	public void setMetricsRef(List<Metric> metricsRef) {
+		this.metricsRef = metricsRef;
+	}
+
+	public String getInterpretationModel() {
+		return interpretationModel;
+	}
+
+	public void setInterpretationModel(String interpretationModel) {
+		this.interpretationModel = interpretationModel;
 	}
 		
 }

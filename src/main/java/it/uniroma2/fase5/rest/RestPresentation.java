@@ -41,13 +41,10 @@ public class RestPresentation {
 	
 	@RequestMapping(value = "/createQuestion/", method = RequestMethod.POST)
 	public ResponseEntity<DTOresponse> createQuestion(@RequestBody DTOQuestion dtoQuestion) {
+	
+		return questionService.createQuestion(dtoQuestion.getQuestionID(),dtoQuestion.getDescription(),
+			dtoQuestion.getCreationDate(),dtoQuestion.getLastModified(),dtoQuestion.getTimeFrame());
 		
-		if(dtoQuestion.getMetricsRef()==null)
-			return questionService.createQuestion(dtoQuestion.getQuestionID(),dtoQuestion.getDescription(),
-				dtoQuestion.getCreationDate(),dtoQuestion.getLastModified(),dtoQuestion.getTimeFrame());
-		else	
-			return questionService.createQuestion(dtoQuestion.getQuestionID(),dtoQuestion.getDescription(),
-				dtoQuestion.getCreationDate(),dtoQuestion.getLastModified(),dtoQuestion.getTimeFrame(),dtoQuestion.getMetricsRef());
 	}
 	
 
@@ -120,21 +117,26 @@ public class RestPresentation {
 	@RequestMapping(value = "/createMeasurementGoal/", method = RequestMethod.POST)
 	public ResponseEntity<DTOresponse> createMeasurementGoal(@RequestBody DTOMeasurementGoal dtoMeasurementGoal) {
 		
-		if(dtoMeasurementGoal.getQuestionsRef()==null)
+		if(dtoMeasurementGoal.getQuestionsRef()==null || dtoMeasurementGoal.getMetricsRef()==null)
 			return measurementGoalService.createMeasurementGoal(dtoMeasurementGoal.getMeasurementGoalId(),dtoMeasurementGoal.getDescription(),
-					dtoMeasurementGoal.getCreationDate(),dtoMeasurementGoal.getLastModified(),dtoMeasurementGoal.getTimeFrame());
+					dtoMeasurementGoal.getCreationDate(),dtoMeasurementGoal.getLastModified(),dtoMeasurementGoal.getTimeFrame(),dtoMeasurementGoal.getInterpretationModel());
 		else	
 			return measurementGoalService.createMeasurementGoal(dtoMeasurementGoal.getMeasurementGoalId(),dtoMeasurementGoal.getDescription(),
-					dtoMeasurementGoal.getCreationDate(),dtoMeasurementGoal.getLastModified(),dtoMeasurementGoal.getTimeFrame(),dtoMeasurementGoal.getQuestionsRef());
+					dtoMeasurementGoal.getCreationDate(),dtoMeasurementGoal.getLastModified(),dtoMeasurementGoal.getTimeFrame(),dtoMeasurementGoal.getInterpretationModel(),
+					dtoMeasurementGoal.getQuestionsRef(),dtoMeasurementGoal.getMetricsRef());
 	}
 	@RequestMapping(value = "/deleteMeasurementGoal/", method = RequestMethod.POST)
 	public ResponseEntity<DTOresponse> deleteMeasurementGoal(@RequestBody DTOMeasurementGoal dtoMeasurementGoal ) {
 
 		return measurementGoalService.deleteMeasurementGoal(dtoMeasurementGoal.getMeasurementGoalId());
 
-	}	
+	}
+	@RequestMapping(value = "/deleteAllMeasurementGoal/", method = RequestMethod.GET)
+	public ResponseEntity<DTOresponse> deleteAllMeasurementGoal() {
 
-	
-	
+		return measurementGoalService.deleteAllMeasurementGoal();
+
+	}		
+
 	
 }

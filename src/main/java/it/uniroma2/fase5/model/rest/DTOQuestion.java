@@ -1,6 +1,6 @@
 package it.uniroma2.fase5.model.rest;
 
-import java.util.List;
+
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -22,8 +22,7 @@ public class DTOQuestion  extends DTO{
 	private String lastModified;
 	@JsonInclude(Include.NON_NULL)
 	private String timeFrame;
-	@JsonInclude(Include.NON_NULL)
-	public List<String> metricsRef;
+	
 	
 	public String getQuestionID() {
 		return questionID;
@@ -55,11 +54,5 @@ public class DTOQuestion  extends DTO{
 	public void setTimeFrame(String timeFrame) {
 		this.timeFrame = timeFrame;
 	}
-	public List<String> getMetricsRef() {
-		return metricsRef;
-	}
-	public void setMetricsRef(List<String> metricsRef) {
-		this.metricsRef = metricsRef;
-	}
-						
+
 }
