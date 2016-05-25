@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="id"></div>
+<input type="button" onClick=prova()>
+<script>
+
+var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("get", url, true);
+    xhr.responseType = "json";
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status == 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status);
+      }
+    };
+    xhr.send();
+};
+var putJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open("post", url, true);
+    xhr.responseType = "json";
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status == 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status);
+      }
+    };
+    var data = new FormData();
+    data.append('measurementGoalId', 'mg6');
+    data.append('description', 'adsgadgs');
+    data.append('creationDate', 'place');
+    
+    var json='{'+
+    '"measurementGoalId":"mg6",'+
+    '"description":"mg1descr",'+
+    '"creationDate":"12/10/2011",'+
+    '"lastModified":"12/10/2015",'+
+	'"timeFrame":"18/12/2015-19/06/2016",'+
+	'"questionsRef":["5742c61d44ae04b22a82cd65","5742c65344ae04b22a82cd66"]}';
+	
+	console.log(JSON.parse(json));
+    xhr.send(data);
+};
+
+	function prova(){
+		putJSON("http://localhost:8080/createMeasurementGoal/",
+			function(err, data) {		
+				console.log(data);
+			}
+		);
+		getJSON("http://localhost:8080/getMeasurementGoals/",
+			function(err, data) {
+			  if (err != null) {
+			    alert("Something went wrong: " + err);
+			  } else {
+				  
+			    alert("Your query count: " + data.measurementGoals);
+			    for(var i in data.measurementGoals){
+			    	document.write("|id: " + data.measurementGoals[i].measurementGoalId + " descr : " + data.measurementGoals[i].description);
+			    	if(data.measurementGoals[i].questionsRef!=null)
+			    		document.write(" arr:"	+ data.measurementGoals[i].questionsRef.toString() + "|<br>");
+			    	else
+			    		document.write("|<br>");
+			    }
+			  }
+			}
+		);
+	};
+</script>
+
+
+
+</body>
+</html>
