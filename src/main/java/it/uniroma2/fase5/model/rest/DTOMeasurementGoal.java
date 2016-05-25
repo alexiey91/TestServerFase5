@@ -26,7 +26,11 @@ public class DTOMeasurementGoal  extends DTO{
 	@JsonInclude(Include.NON_NULL)
 	private String timeFrame;
 	@JsonInclude(Include.NON_NULL)
+	private String interpretationModel;
+	@JsonInclude(Include.NON_NULL)
 	public List<String> questionsRef;
+	@JsonInclude(Include.NON_NULL)
+	public List<String> metricsRef;
 	
 	public String getMeasurementGoalId() {
 		return measurementGoalId;
@@ -64,6 +68,18 @@ public class DTOMeasurementGoal  extends DTO{
 	public void setQuestionsRef(List<String> questionsRef) {
 		this.questionsRef = questionsRef;
 	}
-	
+	public List<String> getMetricsRef() {
+		return metricsRef;
+	}
+	public void setMetricsRef(List<String> metricsRef) {
+		this.metricsRef = metricsRef;
+	}
+	public String getInterpretationModel() {
+		return interpretationModel;
+	}
+	public void setInterpretationModel(String interpretationModel) {
+		this.interpretationModel = interpretationModel;
+	}
+					
 				
 }
