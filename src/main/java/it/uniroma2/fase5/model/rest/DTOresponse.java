@@ -1,16 +1,17 @@
 package it.uniroma2.fase5.model.rest;
 
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-
+import it.uniroma2.fase5.model.Goal;
 import it.uniroma2.fase5.model.MeasurementGoal;
 import it.uniroma2.fase5.model.Metric;
 import it.uniroma2.fase5.model.Problem;
 import it.uniroma2.fase5.model.Question;
 import it.uniroma2.fase5.model.Strategy;
 import it.uniroma2.fase5.model.Student;
+
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 public class DTOresponse extends DTO {
 
@@ -99,6 +100,14 @@ public class DTOresponse extends DTO {
 		this.measurementGoals = measurementGoals;
 	}
 
+	public List<Goal> getGoals() {
+		return goals;
+	}
+
+	public void setGoals(List<Goal> goals) {
+		this.goals = goals;
+	}
+
 
 	/**
 	 * 
@@ -117,6 +126,11 @@ public class DTOresponse extends DTO {
 	@JsonInclude(Include.NON_NULL)
 	private List<Question> questions;
 	
+	@JsonInclude(Include.NON_NULL)
+	private List<Goal> goals;
+	
+	
+
 	@JsonInclude(Include.NON_NULL)
 	private List<MeasurementGoal> measurementGoals;
 	
