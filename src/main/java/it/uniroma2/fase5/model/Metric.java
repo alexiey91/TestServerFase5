@@ -11,28 +11,32 @@ public class Metric {
 	private String metricId;
 	
 	private String description;
-	private String count; // Numero di misure associate alla metrica
-	private List<String> metricUnits;
+	private String count; // Numero di misure associate alla metrica+++da cancellare
+	private List<String> metricUnits;//potrebbe non servire una lista-- per adesso non cambiare
 	private String scaleType;
-	private String range;
+	private String limH;//è stato sostituito range con limite inferiore e superiore
+	private String limL;
 	private String creationDate;
+	private int version;
 	
 	public Metric(){
 		
 	}
 	
-	public Metric(String metricId, String description, String count, List<String> metricUnits, String scaleType, String range,
-			String creationDate) {
+	public Metric(String metricId, String description, String count, List<String> metricUnits, String scaleType,
+			String limH, String limL, String creationDate, int version) {
 		super();
 		this.metricId = metricId;
 		this.description = description;
 		this.count = count;
 		this.metricUnits = metricUnits;
 		this.scaleType = scaleType;
-		this.range = range;
+		this.limH = limH;
+		this.limL = limL;
 		this.creationDate = creationDate;
+		this.version = version;
 	}
-	
+
 	public String getMetricId() {
 		return metricId;
 	}
@@ -61,12 +65,6 @@ public class Metric {
 		return scaleType;
 	}
 	
-	public String getRange() {
-		return range;
-	}
-	public void setRange(String range) {
-		this.range = range;
-	}
 	public String getCreationDate() {
 		return creationDate;
 	}
@@ -78,6 +76,34 @@ public class Metric {
 	}
 	public void setDeriveType(){
 		this.scaleType="DERIVE";
+	}
+
+	public String getLimH() {
+		return limH;
+	}
+
+	public void setLimH(String limH) {
+		this.limH = limH;
+	}
+
+	public String getLimL() {
+		return limL;
+	}
+
+	public void setLimL(String limL) {
+		this.limL = limL;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public void setScaleType(String scaleType) {
+		this.scaleType = scaleType;
 	}
 		
 }

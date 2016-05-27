@@ -17,6 +17,7 @@ public class MeasurementGoal {
     private String lastModified;
     private String timeFrame;
     private String interpretationModel;
+    private int version;
     @DBRef
     private List<Question> questionsRef;
     @DBRef
@@ -27,28 +28,30 @@ public class MeasurementGoal {
 	}
 	
 	public MeasurementGoal(String measurementGoalId, String description, String creationDate, String lastModified,
-			String timeFrame, String interpretationModel, List<Question> questionsRef, List<Metric> metricsRef) {
+			String timeFrame, String interpretationModel, int version) {
 		super();
 		this.measurementGoalId = measurementGoalId;
 		this.description = description;
 		this.creationDate = creationDate;
 		this.lastModified = lastModified;
 		this.timeFrame = timeFrame;
-		this.setInterpretationModel(interpretationModel);
-		this.questionsRef = questionsRef;
-		this.metricsRef = metricsRef;
+		this.interpretationModel = interpretationModel;
+		this.version = version;
 	}
 
-
 	public MeasurementGoal(String measurementGoalId, String description, String creationDate, String lastModified,
-			String timeFrame, String interpretationModel) {
+			String timeFrame, String interpretationModel, int version, List<Question> questionsRef,
+			List<Metric> metricsRef) {
 		super();
 		this.measurementGoalId = measurementGoalId;
 		this.description = description;
 		this.creationDate = creationDate;
 		this.lastModified = lastModified;
 		this.timeFrame = timeFrame;
-		this.setInterpretationModel(interpretationModel);
+		this.interpretationModel = interpretationModel;
+		this.version = version;
+		this.questionsRef = questionsRef;
+		this.metricsRef = metricsRef;
 	}
 
 	public String getMeasurementGoalId() {
@@ -101,5 +104,12 @@ public class MeasurementGoal {
 	public void setInterpretationModel(String interpretationModel) {
 		this.interpretationModel = interpretationModel;
 	}
-		
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+	
 }

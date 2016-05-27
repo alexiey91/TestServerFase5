@@ -156,10 +156,4 @@ public class DTOresponse extends DTO {
 	public void setStrategies(List<Strategy> strategies) {
 		this.strategies = strategies;
 	}
-
-	
-
-	
-	
-	
 }

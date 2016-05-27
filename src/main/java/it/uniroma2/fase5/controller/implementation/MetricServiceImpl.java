@@ -19,9 +19,9 @@ public class MetricServiceImpl implements MetricService {
 	MetricRepository metricRepository;
 	
 	@Override
-	public ResponseEntity<DTOresponse> createMetric(String metricId, String description, String count, List<String> metricUnits, String scaleType, String range, String creationDate) {
+	public ResponseEntity<DTOresponse> createMetric(String metricId, String description, String count, List<String> metricUnits, String scaleType, String limH, String limL, String creationDate, int version) {
 		
-		Metric metric= new Metric(metricId, description, count, metricUnits, scaleType, range, creationDate);
+		Metric metric= new Metric(metricId, description, count, metricUnits, scaleType, limH, limL, creationDate, version);
 		
 		metricRepository.save(metric);
 				
@@ -36,11 +36,7 @@ public class MetricServiceImpl implements MetricService {
 	
 		
 		metricRepository.delete(metricRepository.findOne(metricId));
-		/*List<Problem> problems = problemRepository.findAll();
-		for(Problem p:problems)
-			if (p.getCause().equals(problemcause))
-				problemRepository.delete(p.getId());
-		*/		
+		
 		return null;
 	}
 	

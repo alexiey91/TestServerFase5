@@ -1,6 +1,4 @@
 package it.uniroma2.fase5.model.rest;
-
-import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -25,10 +23,13 @@ public class DTOMetric  extends DTO{
 	@JsonInclude(Include.NON_NULL)
 	private String scaleType;
 	@JsonInclude(Include.NON_NULL)
-	private String range;
+	private String limH;
+	@JsonInclude(Include.NON_NULL)
+	private String limL;
 	@JsonInclude(Include.NON_NULL)
 	private String creationDate;
-	
+	@JsonInclude(Include.NON_NULL)
+	int version;
 	
 	public String getId() {
 		return id;
@@ -57,28 +58,39 @@ public class DTOMetric  extends DTO{
 	public List<String> getMetricUnits() {
 		return metricUnits;
 	}
-	public void setMetricUnits(ArrayList<String> metricUnits) {
-		this.metricUnits = metricUnits;
-	}
 	public String getScaleType() {
 		return scaleType;
 	}
 	public void setScaleType(String scaleType) {
 		this.scaleType = scaleType;
 	}
-	public String getRange() {
-		return range;
-	}
-	public void setRange(String range) {
-		this.range = range;
-	}
+	
 	public String getCreationDate() {
 		return creationDate;
 	}
 	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
+	public String getLimH() {
+		return limH;
+	}
+	public void setLimH(String limH) {
+		this.limH = limH;
+	}
+	public String getLimL() {
+		return limL;
+	}
+	public void setLimL(String limL) {
+		this.limL = limL;
+	}
+	public int getVersion() {
+		return version;
+	}
+	public void setVersion(int version) {
+		this.version = version;
+	}
+	public void setMetricUnits(List<String> metricUnits) {
+		this.metricUnits = metricUnits;
+	}
 	
 }

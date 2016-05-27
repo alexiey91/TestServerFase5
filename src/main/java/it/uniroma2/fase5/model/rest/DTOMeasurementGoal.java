@@ -28,6 +28,8 @@ public class DTOMeasurementGoal  extends DTO{
 	@JsonInclude(Include.NON_NULL)
 	private String interpretationModel;
 	@JsonInclude(Include.NON_NULL)
+	private int version;
+	@JsonInclude(Include.NON_NULL)
 	public List<String> questionsRef;
 	@JsonInclude(Include.NON_NULL)
 	public List<String> metricsRef;
@@ -80,6 +82,12 @@ public class DTOMeasurementGoal  extends DTO{
 	public void setInterpretationModel(String interpretationModel) {
 		this.interpretationModel = interpretationModel;
 	}
-					
+	public int getVersion() {
+		return version;
+	}
+	public void setVersion(int version) {
+		this.version = version;
+	}
+	
 				
 }

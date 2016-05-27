@@ -20,9 +20,9 @@ public class QuestionServiceImpl implements QuestionService {
 	QuestionRepository questionRepository;
 	
 	@Override
-	public ResponseEntity<DTOresponse> createQuestion(String questionId,String description, String creationDate, String lastModified, String timeFrame) {
+	public ResponseEntity<DTOresponse> createQuestion(String questionId,String description, String creationDate, String lastModified, String timeFrame, int version, String focus) {
 		
-		Question question= new Question(questionId, description, creationDate, lastModified, timeFrame);
+		Question question= new Question(questionId, description, creationDate, lastModified, timeFrame, version, focus);
 		questionRepository.save(question);
 				
 		DTOresponse dtoresponse = new DTOresponse();		

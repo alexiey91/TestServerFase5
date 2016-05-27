@@ -22,6 +22,10 @@ public class DTOQuestion  extends DTO{
 	private String lastModified;
 	@JsonInclude(Include.NON_NULL)
 	private String timeFrame;
+	@JsonInclude(Include.NON_NULL)
+	private int version;
+	@JsonInclude(Include.NON_NULL)
+	private String focus;
 	
 	
 	public String getQuestionID() {
@@ -35,6 +39,18 @@ public class DTOQuestion  extends DTO{
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public int getVersion() {
+		return version;
+	}
+	public void setVersion(int version) {
+		this.version = version;
+	}
+	public String getFocus() {
+		return focus;
+	}
+	public void setFocus(String focus) {
+		this.focus = focus;
 	}
 	public String getCreationDate() {
 		return creationDate;

@@ -14,20 +14,25 @@ public class Question {
 	private String creationDate;
 	private String lastModified;
 	private String timeFrame;
-	
+	private int version;
+	private String focus;
 
 	public Question(){
 		
 	}
-		
-	public Question(String questionId, String description, String creationDate, String lastModified, String timeFrame) {
+	
+	public Question(String questionId, String description, String creationDate, String lastModified, String timeFrame,
+			int version, String focus) {
 		super();
 		this.questionId = questionId;
 		this.description = description;
 		this.creationDate = creationDate;
 		this.lastModified = lastModified;
 		this.timeFrame = timeFrame;
+		this.version = version;
+		this.focus = focus;
 	}
+
 	public String getQuestionId() {
 		return questionId;
 	}
@@ -57,6 +62,22 @@ public class Question {
 	}
 	public void setTimeFrame(String timeFrame) {
 		this.timeFrame = timeFrame;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public String getFocus() {
+		return focus;
+	}
+
+	public void setFocus(String focus) {
+		this.focus = focus;
 	}
 	
 }

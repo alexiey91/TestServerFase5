@@ -53,7 +53,8 @@ public class RestPresentation {
 
 		return questionService.createQuestion(dtoQuestion.getQuestionID(),
 				dtoQuestion.getDescription(), dtoQuestion.getCreationDate(),
-				dtoQuestion.getLastModified(), dtoQuestion.getTimeFrame());
+				dtoQuestion.getLastModified(), dtoQuestion.getTimeFrame(),
+				dtoQuestion.getVersion(),dtoQuestion.getFocus());
 
 	}
 
@@ -69,7 +70,8 @@ public class RestPresentation {
 		return metricService.createMetric(dtoMetric.getMetricId(),
 				dtoMetric.getDescription(), dtoMetric.getCount(),
 				dtoMetric.getMetricUnits(), dtoMetric.getScaleType(),
-				dtoMetric.getRange(), dtoMetric.getCreationDate());
+				dtoMetric.getLimH(), dtoMetric.getLimL(),
+				dtoMetric.getCreationDate(), dtoMetric.getVersion());
 
 	}
 
@@ -153,7 +155,9 @@ public class RestPresentation {
 					dtoMeasurementGoal.getCreationDate(),
 					dtoMeasurementGoal.getLastModified(),
 					dtoMeasurementGoal.getTimeFrame(),
-					dtoMeasurementGoal.getInterpretationModel());
+					dtoMeasurementGoal.getInterpretationModel(),
+					dtoMeasurementGoal.getVersion());
+					
 		else
 			return measurementGoalService.createMeasurementGoal(
 					dtoMeasurementGoal.getMeasurementGoalId(),
@@ -162,6 +166,7 @@ public class RestPresentation {
 					dtoMeasurementGoal.getLastModified(),
 					dtoMeasurementGoal.getTimeFrame(),
 					dtoMeasurementGoal.getInterpretationModel(),
+					dtoMeasurementGoal.getVersion(),
 					dtoMeasurementGoal.getQuestionsRef(),
 					dtoMeasurementGoal.getMetricsRef());
 	}
