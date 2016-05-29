@@ -1,13 +1,5 @@
 package it.uniroma2.fase5.controller.implementation;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
-
 import it.uniroma2.fase5.controller.GoalService;
 import it.uniroma2.fase5.model.Goal;
 import it.uniroma2.fase5.model.MeasurementGoal;
@@ -16,6 +8,14 @@ import it.uniroma2.fase5.model.rest.DTOresponse;
 import it.uniroma2.fase5.repositories.GoalRepository;
 import it.uniroma2.fase5.repositories.MeasurementGoalRepository;
 import it.uniroma2.fase5.repositories.StrategyRepository;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 
 @Service("GoalService")
@@ -29,14 +29,15 @@ public class GoalServiceImpl implements GoalService {
 	StrategyRepository strategyRepository;
 	
 	@Override
-	public ResponseEntity<DTOresponse> createGoal(String goalId, int version,
-			String creationDate, String lastModifed, String timeframe,
-			String description, List<String> context, List<String> assumption,
+	public ResponseEntity<DTOresponse> createGoal(String gaolId, int version,
+			String creationDate, String lastModified, String timeFrame,
+			String object, int magnitude, String focus, String costraint,
+			String organizationalScope, String description,
 			List<String> measurementRef, List<String> strategyRef) {
 				
 		List<MeasurementGoal> temp= new ArrayList<MeasurementGoal>();
 		List<Strategy> temp2= new ArrayList<Strategy>();
-		for( String s : measurementRef ){
+		for( String s :measurementRef ){
 			if(measurementGoalRepository.findOne(s)!=null)
 				temp.add(measurementGoalRepository.findOne(s));				
 		}
@@ -51,7 +52,9 @@ public class GoalServiceImpl implements GoalService {
 		if (temp2.size()==0){
 			return new ResponseEntity<DTOresponse>(new DTOresponse(),HttpStatus.BAD_REQUEST);
 		}		
-		Goal goal= new Goal(goalId,version,creationDate, lastModifed ,timeframe,description, context,assumption,temp,temp2);
+		Goal goal= new Goal(gaolId,version,creationDate,lastModified,timeFrame,
+				 object, magnitude,focus,costraint,
+				organizationalScope, description,temp,temp2);
 		goalRepository.save(goal);
 				
 		DTOresponse dtoresponse = new DTOresponse();		
@@ -61,11 +64,15 @@ public class GoalServiceImpl implements GoalService {
 	}
 
 	@Override
-	public ResponseEntity<DTOresponse> createGoal(String goalId, int version,
-			String creationDate, String lastModifed, String timeframe,
-			String description, List<String> context, List<String> assumption) {
+	public ResponseEntity<DTOresponse> createGoal(String gaolId, int version,
+			String creationDate, String lastModified, String timeFrame,
+			String object, int magnitude, String focus, String costraint,
+			String organizationalScope, String description) {
 		// TODO Auto-generated method stub
-		Goal goal = new Goal(goalId,version,creationDate, lastModifed ,timeframe,description, context, assumption);
+		Goal goal = new Goal(gaolId,version,
+				 creationDate,  lastModified,  timeFrame,
+				 object,  magnitude,  focus,  costraint,
+				 organizationalScope,  description);
 		goalRepository.save(goal);
 		DTOresponse dtoresponse = new DTOresponse();
 		ResponseEntity<DTOresponse> response = new ResponseEntity<DTOresponse>(

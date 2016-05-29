@@ -24,9 +24,15 @@ private static final long serialVersionUID = 1L;
 	@JsonInclude(Include.NON_NULL)
 	private String description;
 	@JsonInclude(Include.NON_NULL)		
-	private List<String> context;
-	@JsonInclude(Include.NON_NULL)
-	private List<String> assumptions;
+	private String object;
+	@JsonInclude(Include.NON_NULL)		
+		private int magnitude;
+	@JsonInclude(Include.NON_NULL)		
+		private String focus;
+	@JsonInclude(Include.NON_NULL)		
+		private String costraint;
+	@JsonInclude(Include.NON_NULL)		
+	private String organizationalScope;
 	
 	@JsonInclude(Include.NON_NULL)
 	private List<String> measurementRef;
@@ -84,20 +90,38 @@ private static final long serialVersionUID = 1L;
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public List<String> getContext() {
-		return context;
-	}
-	public void setContext(List<String> context) {
-		this.context = context;
-	}
-	public List<String> getAssumptions() {
-		return assumptions;
-	}
-	public void setAssumptions(List<String> assumptions) {
-		this.assumptions = assumptions;
-	}
 	
 	
+	public String getObject() {
+		return object;
+	}
+	public void setObject(String object) {
+		this.object = object;
+	}
+	public int getMagnitude() {
+		return magnitude;
+	}
+	public void setMagnitude(int magnitude) {
+		this.magnitude = magnitude;
+	}
+	public String getFocus() {
+		return focus;
+	}
+	public void setFocus(String focus) {
+		this.focus = focus;
+	}
+	public String getCostraint() {
+		return costraint;
+	}
+	public void setCostraint(String costraint) {
+		this.costraint = costraint;
+	}
+	public String getOrganizationalScope() {
+		return organizationalScope;
+	}
+	public void setOrganizationalScope(String organizationalScope) {
+		this.organizationalScope = organizationalScope;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

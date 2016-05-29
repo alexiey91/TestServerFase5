@@ -1,19 +1,17 @@
 package it.uniroma2.fase5.rest;
 
+import java.util.List;
+
 import it.uniroma2.fase5.controller.GoalService;
 import it.uniroma2.fase5.controller.MeasurementGoalService;
 import it.uniroma2.fase5.controller.MetricService;
-import it.uniroma2.fase5.controller.ProblemService;
 import it.uniroma2.fase5.controller.QuestionService;
 import it.uniroma2.fase5.controller.StrategyService;
-import it.uniroma2.fase5.controller.StudentService;
 import it.uniroma2.fase5.model.rest.DTOGoal;
 import it.uniroma2.fase5.model.rest.DTOMeasurementGoal;
 import it.uniroma2.fase5.model.rest.DTOMetric;
-import it.uniroma2.fase5.model.rest.DTOProblem;
 import it.uniroma2.fase5.model.rest.DTOQuestion;
 import it.uniroma2.fase5.model.rest.DTOStrategy;
-import it.uniroma2.fase5.model.rest.DTOStudent;
 import it.uniroma2.fase5.model.rest.DTOresponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +25,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class RestPresentation {
 
-	@Autowired
-	StudentService studentService;
-	@Autowired
-	ProblemService problemService;
 	@Autowired
 	MetricService metricService;
 	@Autowired
@@ -54,7 +48,7 @@ public class RestPresentation {
 		return questionService.createQuestion(dtoQuestion.getQuestionID(),
 				dtoQuestion.getDescription(), dtoQuestion.getCreationDate(),
 				dtoQuestion.getLastModified(), dtoQuestion.getTimeFrame(),
-				dtoQuestion.getVersion(),dtoQuestion.getFocus());
+				dtoQuestion.getVersion(), dtoQuestion.getFocus());
 
 	}
 
@@ -83,61 +77,6 @@ public class RestPresentation {
 
 	}
 
-	@RequestMapping(value = "/getStudents/", method = RequestMethod.GET)
-	public ResponseEntity<DTOresponse> getStudents() {
-
-		return studentService.getStudents();
-
-	}
-
-	@RequestMapping(value = "/createStudent/", method = RequestMethod.POST)
-	public ResponseEntity<DTOresponse> createStudent(
-			@RequestBody DTOStudent dtoStudent) {
-
-		return studentService.createStudent(dtoStudent.getName(),
-				dtoStudent.getSurname(), dtoStudent.getProblem());
-	}
-
-	@RequestMapping(value = "/updateStudent/", method = RequestMethod.POST)
-	public ResponseEntity<DTOresponse> updateStudent(
-			@RequestBody DTOStudent dtoStudent) {
-
-		return studentService.updateStudent(dtoStudent.getId(),
-				dtoStudent.getName(), dtoStudent.getSurname(),
-				dtoStudent.getProblem());
-
-	}
-
-	@RequestMapping(value = "/getStudentsByName/", method = RequestMethod.GET)
-	public ResponseEntity<DTOresponse> getStudentsByName(String name) {
-
-		return studentService.getStudentsByName(name);
-
-	}
-
-	@RequestMapping(value = "/getProblems/", method = RequestMethod.GET)
-	public ResponseEntity<DTOresponse> getProblems() {
-
-		return problemService.getProblems();
-
-	}
-
-	@RequestMapping(value = "/createProblem/", method = RequestMethod.POST)
-	public ResponseEntity<DTOresponse> createProblem(
-			@RequestBody DTOProblem dtoProblem) {
-
-		return problemService.createProblem(dtoProblem.getCause());
-
-	}
-
-	@RequestMapping(value = "/deleteProblem/", method = RequestMethod.POST)
-	public ResponseEntity<DTOresponse> deleteProblem(
-			@RequestBody DTOProblem dtoProblem) {
-
-		return problemService.deleteProblem(dtoProblem.getCause());
-
-	}
-
 	@RequestMapping(value = "/getMeasurementGoals/", method = RequestMethod.GET)
 	public ResponseEntity<DTOresponse> getMeasurementGoals() {
 		return measurementGoalService.getMeasurementGoals();
@@ -157,7 +96,7 @@ public class RestPresentation {
 					dtoMeasurementGoal.getTimeFrame(),
 					dtoMeasurementGoal.getInterpretationModel(),
 					dtoMeasurementGoal.getVersion());
-					
+
 		else
 			return measurementGoalService.createMeasurementGoal(
 					dtoMeasurementGoal.getMeasurementGoalId(),
@@ -219,15 +158,17 @@ public class RestPresentation {
 			return goalService.createGoal(dtoGoal.getGoalId(),
 					dtoGoal.getVersion(), dtoGoal.getCreationDate(),
 					dtoGoal.getLastModified(), dtoGoal.getTimeFrame(),
-					dtoGoal.getDescription(), dtoGoal.getContext(),
-					dtoGoal.getAssumptions());
+					dtoGoal.getObject(), dtoGoal.getMagnitude(),
+					dtoGoal.getFocus(), dtoGoal.getCostraint(),
+					dtoGoal.getOrganizationalScope(), dtoGoal.getDescription());
 		else
 			return goalService.createGoal(dtoGoal.getGoalId(),
 					dtoGoal.getVersion(), dtoGoal.getCreationDate(),
 					dtoGoal.getLastModified(), dtoGoal.getTimeFrame(),
-					dtoGoal.getDescription(), dtoGoal.getContext(),
-					dtoGoal.getAssumptions(), dtoGoal.getMeasurementRef(),
-					dtoGoal.getStrategyRef());
+					dtoGoal.getObject(), dtoGoal.getMagnitude(),
+					dtoGoal.getFocus(), dtoGoal.getCostraint(),
+					dtoGoal.getOrganizationalScope(), dtoGoal.getDescription(),
+					dtoGoal.getMeasurementRef(), dtoGoal.getStrategyRef());
 
 	}
 

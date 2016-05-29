@@ -11,14 +11,28 @@ public class Goal {
 
 	@Id
 	private String gaolId;
+	// indica la versione del goal
 	private int version;
+	// indica la data di creazione
 	private String creationDate;
+	// indica la data di ultima modifica
 	private String lastModified;
+	// indica la durata
 	private String timeFrame;
 	// private Enum state;
+	// indica l'ogetto del goal
+	private String object;
+
+	// indica la percetuale del goal
+	private int magnitude;
+	// indica una specificazione dell'object
+	private String focus;
+	// indica le limitazioni del goal
+	private String costraint;
+	// indica lo scopo organizativo del goal
+	private String organizationalScope;
+	// indica la descrizione del goal
 	private String description;
-	private List<String> context;
-	private List<String> assumption;
 
 	@DBRef
 	private List<MeasurementGoal> measurementRef;
@@ -30,17 +44,21 @@ public class Goal {
 	}
 
 	public Goal(String gaolId, int version, String creationDate,
-			String lastModified, String timeFrame, String description,
-			List<String> context, List<String> assumption) {
+			String lastModified, String timeFrame, String object,
+			int magnitude, String focus, String costraint,
+			String organizationalScope, String description) {
 		super();
 		this.gaolId = gaolId;
 		this.version = version;
 		this.creationDate = creationDate;
 		this.lastModified = lastModified;
 		this.timeFrame = timeFrame;
+		this.object = object;
+		this.magnitude = magnitude;
+		this.focus = focus;
+		this.costraint = costraint;
+		this.organizationalScope = organizationalScope;
 		this.description = description;
-		this.context = context;
-		this.assumption = assumption;
 	}
 
 	public String getGaolId() {
@@ -83,6 +101,46 @@ public class Goal {
 		this.timeFrame = timeFrame;
 	}
 
+	public String getObject() {
+		return object;
+	}
+
+	public void setObject(String object) {
+		this.object = object;
+	}
+
+	public int getMagnitude() {
+		return magnitude;
+	}
+
+	public void setMagnitude(int magnitude) {
+		this.magnitude = magnitude;
+	}
+
+	public String getFocus() {
+		return focus;
+	}
+
+	public void setFocus(String focus) {
+		this.focus = focus;
+	}
+
+	public String getCostraint() {
+		return costraint;
+	}
+
+	public void setCostraint(String costraint) {
+		this.costraint = costraint;
+	}
+
+	public String getOrganizationalScope() {
+		return organizationalScope;
+	}
+
+	public void setOrganizationalScope(String organizationalScope) {
+		this.organizationalScope = organizationalScope;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -91,20 +149,25 @@ public class Goal {
 		this.description = description;
 	}
 
-	public List<String> getContext() {
-		return context;
-	}
-
-	public void setContext(List<String> context) {
-		this.context = context;
-	}
-
-	public List<String> getAssumption() {
-		return assumption;
-	}
-
-	public void setAssumption(List<String> assumption) {
-		this.assumption = assumption;
+	public Goal(String gaolId, int version, String creationDate,
+			String lastModified, String timeFrame, String object,
+			int magnitude, String focus, String costraint,
+			String organizationalScope, String description,
+			List<MeasurementGoal> measurementRef, List<Strategy> strategyRef) {
+		super();
+		this.gaolId = gaolId;
+		this.version = version;
+		this.creationDate = creationDate;
+		this.lastModified = lastModified;
+		this.timeFrame = timeFrame;
+		this.object = object;
+		this.magnitude = magnitude;
+		this.focus = focus;
+		this.costraint = costraint;
+		this.organizationalScope = organizationalScope;
+		this.description = description;
+		this.measurementRef = measurementRef;
+		this.strategyRef = strategyRef;
 	}
 
 	public List<MeasurementGoal> getMeasurementRef() {
@@ -120,23 +183,6 @@ public class Goal {
 	}
 
 	public void setStrategyRef(List<Strategy> strategyRef) {
-		this.strategyRef = strategyRef;
-	}
-
-	public Goal(String gaolId, int version, String creationDate,
-			String lastModified, String timeFrame, String description,
-			List<String> context, List<String> assumption,
-			List<MeasurementGoal> measurementRef, List<Strategy> strategyRef) {
-		super();
-		this.gaolId = gaolId;
-		this.version = version;
-		this.creationDate = creationDate;
-		this.lastModified = lastModified;
-		this.timeFrame = timeFrame;
-		this.description = description;
-		this.context = context;
-		this.assumption = assumption;
-		this.measurementRef = measurementRef;
 		this.strategyRef = strategyRef;
 	}
 

@@ -7,10 +7,21 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 public interface GoalService {
-	
-	ResponseEntity<DTOresponse> createGoal(String goalId,int version,String creationDate, String lastModifed, String timeframe, String description, List<String> context,List<String> assumption, List<String> measurementRef,List<String> strategyRef);
-	ResponseEntity<DTOresponse> createGoal(String goalId,int version,String creationDate, String lastModifed, String timeframe, String description, List<String> context,List<String> assumption);
+
+	ResponseEntity<DTOresponse> createGoal(String gaolId, int version,
+			String creationDate, String lastModified, String timeFrame,
+			String object, int magnitude, String focus, String costraint,
+			String organizationalScope, String description,
+			List<String> measurementRef, List<String> strategyRef);
+
+	ResponseEntity<DTOresponse> createGoal(String gaolId, int version, String creationDate,
+			String lastModified, String timeFrame, String object,
+			int magnitude, String focus, String costraint,
+			String organizationalScope, String description);
+
 	ResponseEntity<DTOresponse> getGoals();
+
 	public ResponseEntity<DTOresponse> deleteAllGoal();
+
 	ResponseEntity<DTOresponse> deleteGoal(String goalId);
 }
