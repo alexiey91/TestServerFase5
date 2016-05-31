@@ -1,15 +1,16 @@
 package it.uniroma2.fase5.model.rest;
 
-import it.uniroma2.fase5.model.Goal;
-import it.uniroma2.fase5.model.MeasurementGoal;
-import it.uniroma2.fase5.model.Metric;
-import it.uniroma2.fase5.model.Question;
-import it.uniroma2.fase5.model.Strategy;
-
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+import it.uniroma2.fase5.model.Goal;
+import it.uniroma2.fase5.model.MeasurementGoal;
+import it.uniroma2.fase5.model.Metric;
+import it.uniroma2.fase5.model.Question;
+import it.uniroma2.fase5.model.RetrospectiveReport;
+import it.uniroma2.fase5.model.Strategy;
 
 public class DTOresponse extends DTO {
 
@@ -73,6 +74,9 @@ public class DTOresponse extends DTO {
 	private List<Strategy> strategies;
 
 	@JsonInclude(Include.NON_NULL)
+	private List<RetrospectiveReport> retrospectiveReports;
+	
+	@JsonInclude(Include.NON_NULL)
 	private String problemid;
 
 	@JsonInclude(Include.NON_NULL)
@@ -91,4 +95,13 @@ public class DTOresponse extends DTO {
 	public void setStrategies(List<Strategy> strategies) {
 		this.strategies = strategies;
 	}
+
+	public List<RetrospectiveReport> getRetrospectiveReports() {
+		return retrospectiveReports;
+	}
+
+	public void setRetrospectiveReports(List<RetrospectiveReport> retrospectiveReports) {
+		this.retrospectiveReports = retrospectiveReports;
+	}
+	
 }
