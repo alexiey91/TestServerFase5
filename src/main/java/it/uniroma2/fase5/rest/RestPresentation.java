@@ -1,27 +1,38 @@
 package it.uniroma2.fase5.rest;
 
-import it.uniroma2.fase5.controller.GoalService;
-import it.uniroma2.fase5.controller.MeasurementGoalService;
-import it.uniroma2.fase5.controller.MetricService;
-import it.uniroma2.fase5.controller.ProjectService;
-import it.uniroma2.fase5.controller.QuestionService;
-import it.uniroma2.fase5.controller.StatusService;
-import it.uniroma2.fase5.controller.StrategyService;
-import it.uniroma2.fase5.model.rest.DTOGoal;
-import it.uniroma2.fase5.model.rest.DTOMeasurementGoal;
-import it.uniroma2.fase5.model.rest.DTOMetric;
-import it.uniroma2.fase5.model.rest.DTOProject;
-import it.uniroma2.fase5.model.rest.DTOQuestion;
-import it.uniroma2.fase5.model.rest.DTOStatus;
-import it.uniroma2.fase5.model.rest.DTOStrategy;
-import it.uniroma2.fase5.model.rest.DTOresponse;
-
+<<<<<<< HEAD
+=======
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+>>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
+import it.uniroma2.fase5.controller.GoalService;
+import it.uniroma2.fase5.controller.MeasurementGoalService;
+import it.uniroma2.fase5.controller.MetricService;
+import it.uniroma2.fase5.controller.ProjectService;
+import it.uniroma2.fase5.controller.QuestionService;
+<<<<<<< HEAD
+import it.uniroma2.fase5.controller.StatusService;
+=======
+import it.uniroma2.fase5.controller.RetrospectiveReportService;
+>>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
+import it.uniroma2.fase5.controller.StrategyService;
+import it.uniroma2.fase5.model.rest.DTOGoal;
+import it.uniroma2.fase5.model.rest.DTOMeasurementGoal;
+import it.uniroma2.fase5.model.rest.DTOMetric;
+import it.uniroma2.fase5.model.rest.DTOProject;
+import it.uniroma2.fase5.model.rest.DTOQuestion;
+<<<<<<< HEAD
+import it.uniroma2.fase5.model.rest.DTOStatus;
+=======
+import it.uniroma2.fase5.model.rest.DTORetrospectiveReport;
+>>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
+import it.uniroma2.fase5.model.rest.DTOStrategy;
+import it.uniroma2.fase5.model.rest.DTOresponse;
 
 @RestController
 @RequestMapping("/")
@@ -38,9 +49,13 @@ public class RestPresentation {
 	@Autowired
 	GoalService goalService;
 	@Autowired
+<<<<<<< HEAD
 	StatusService statusService;
 	@Autowired
 	ProjectService projectService;
+=======
+	RetrospectiveReportService retrospectiveReportService;
+>>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
 
 	@RequestMapping(value = "/getQuestions/", method = RequestMethod.GET)
 	public ResponseEntity<DTOresponse> getQuestions() {
@@ -138,7 +153,7 @@ public class RestPresentation {
 	}
 
 	@RequestMapping(value = "/createStrategy/", method = RequestMethod.POST)
-	public ResponseEntity<DTOresponse> createtrategy(
+	public ResponseEntity<DTOresponse> createStrategy(
 			@RequestBody DTOStrategy dtoStrategy) {
 
 		return strategyService.createStrategy(dtoStrategy.getStrategyId(),
@@ -197,6 +212,7 @@ public class RestPresentation {
 
 	}
 
+<<<<<<< HEAD
 	@RequestMapping(value = "/createStatus/", method = RequestMethod.POST)
 	public ResponseEntity<DTOresponse> createStatus(
 			@RequestBody DTOStatus dtoStatus) {
@@ -257,4 +273,32 @@ public class RestPresentation {
 		return projectService.deleteAllProject();
 
 	}
+=======
+	@RequestMapping(value = "/getRetrospectiveReports/", method = RequestMethod.GET)
+	public ResponseEntity<DTOresponse> getRetrospectiveReports() {
+		return retrospectiveReportService.getRetrospectiveReports();
+	}
+
+	@RequestMapping(value = "/createRetrospectiveReport/", method = RequestMethod.POST)
+	public ResponseEntity<DTOresponse> createRetrospectiveReport(@RequestBody DTORetrospectiveReport dtoReport) {
+
+		return retrospectiveReportService.createRetrospectiveReport(dtoReport.getRetrospectiveReportId(),
+				dtoReport.getConclusion(), dtoReport.getLastModified(), dtoReport.getIds(),
+				dtoReport.getPriorityList(),dtoReport.getDescriptionList());
+	}
+	@RequestMapping(value = "/deleteRetrospectiveReport/", method = RequestMethod.POST)
+	public ResponseEntity<DTOresponse> deleteRetrospectiveReport(@RequestBody DTORetrospectiveReport dtoReport) {
+
+		return retrospectiveReportService.deleteRetrospectiveReport(dtoReport.getRetrospectiveReportId());
+
+	}
+
+	@RequestMapping(value = "/deleteAllRetrospectiveReports/", method = RequestMethod.GET)
+	public ResponseEntity<DTOresponse> deleteAllRetrospectiveReport() {
+
+		return retrospectiveReportService.deleteAllRetrospectiveReport();
+
+	}
+	
+>>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
 }

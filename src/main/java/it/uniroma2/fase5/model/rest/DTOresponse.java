@@ -1,17 +1,21 @@
 package it.uniroma2.fase5.model.rest;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import it.uniroma2.fase5.model.Goal;
 import it.uniroma2.fase5.model.MeasurementGoal;
 import it.uniroma2.fase5.model.Metric;
 import it.uniroma2.fase5.model.Project;
 import it.uniroma2.fase5.model.Question;
+<<<<<<< HEAD
 import it.uniroma2.fase5.model.Status;
+=======
+import it.uniroma2.fase5.model.RetrospectiveReport;
+>>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
 import it.uniroma2.fase5.model.Strategy;
-
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 public class DTOresponse extends DTO {
 
@@ -75,8 +79,16 @@ public class DTOresponse extends DTO {
 	private List<Strategy> strategies;
 
 	@JsonInclude(Include.NON_NULL)
+<<<<<<< HEAD
 	private List<Status> status;
 	
+=======
+	private List<RetrospectiveReport> retrospectiveReports;
+	
+	@JsonInclude(Include.NON_NULL)
+	private String problemid;
+
+>>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
 	@JsonInclude(Include.NON_NULL)
 	private List<Project> project;
 
@@ -96,12 +108,21 @@ public class DTOresponse extends DTO {
 		this.strategies = strategies;
 	}
 
+<<<<<<< HEAD
 	public List<Project> getProject() {
 		return project;
 	}
 
 	public void setProject(List<Project> project) {
 		this.project = project;
+=======
+	public List<RetrospectiveReport> getRetrospectiveReports() {
+		return retrospectiveReports;
+	}
+
+	public void setRetrospectiveReports(List<RetrospectiveReport> retrospectiveReports) {
+		this.retrospectiveReports = retrospectiveReports;
+>>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
 	}
 	
 }
