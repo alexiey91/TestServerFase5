@@ -3,7 +3,9 @@ package it.uniroma2.fase5.model.rest;
 import it.uniroma2.fase5.model.Goal;
 import it.uniroma2.fase5.model.MeasurementGoal;
 import it.uniroma2.fase5.model.Metric;
+import it.uniroma2.fase5.model.Project;
 import it.uniroma2.fase5.model.Question;
+import it.uniroma2.fase5.model.Status;
 import it.uniroma2.fase5.model.Strategy;
 
 import java.util.List;
@@ -73,16 +75,18 @@ public class DTOresponse extends DTO {
 	private List<Strategy> strategies;
 
 	@JsonInclude(Include.NON_NULL)
-	private String problemid;
-
+	private List<Status> status;
+	
 	@JsonInclude(Include.NON_NULL)
-	private String studentid;
+	private List<Project> project;
 
-	@JsonInclude(Include.NON_NULL)
-	private String studentname;
+	public List<Status> getStatus() {
+		return status;
+	}
 
-	@JsonInclude(Include.NON_NULL)
-	private String studentsurname;
+	public void setStatus(List<Status> status) {
+		this.status = status;
+	}
 
 	public List<Strategy> getStrategies() {
 		return strategies;
@@ -91,4 +95,13 @@ public class DTOresponse extends DTO {
 	public void setStrategies(List<Strategy> strategies) {
 		this.strategies = strategies;
 	}
+
+	public List<Project> getProject() {
+		return project;
+	}
+
+	public void setProject(List<Project> project) {
+		this.project = project;
+	}
+	
 }

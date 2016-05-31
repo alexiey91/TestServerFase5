@@ -1,16 +1,18 @@
 package it.uniroma2.fase5.rest;
 
-import java.util.List;
-
 import it.uniroma2.fase5.controller.GoalService;
 import it.uniroma2.fase5.controller.MeasurementGoalService;
 import it.uniroma2.fase5.controller.MetricService;
+import it.uniroma2.fase5.controller.ProjectService;
 import it.uniroma2.fase5.controller.QuestionService;
+import it.uniroma2.fase5.controller.StatusService;
 import it.uniroma2.fase5.controller.StrategyService;
 import it.uniroma2.fase5.model.rest.DTOGoal;
 import it.uniroma2.fase5.model.rest.DTOMeasurementGoal;
 import it.uniroma2.fase5.model.rest.DTOMetric;
+import it.uniroma2.fase5.model.rest.DTOProject;
 import it.uniroma2.fase5.model.rest.DTOQuestion;
+import it.uniroma2.fase5.model.rest.DTOStatus;
 import it.uniroma2.fase5.model.rest.DTOStrategy;
 import it.uniroma2.fase5.model.rest.DTOresponse;
 
@@ -35,6 +37,10 @@ public class RestPresentation {
 	StrategyService strategyService;
 	@Autowired
 	GoalService goalService;
+	@Autowired
+	StatusService statusService;
+	@Autowired
+	ProjectService projectService;
 
 	@RequestMapping(value = "/getQuestions/", method = RequestMethod.GET)
 	public ResponseEntity<DTOresponse> getQuestions() {
@@ -191,4 +197,64 @@ public class RestPresentation {
 
 	}
 
+	@RequestMapping(value = "/createStatus/", method = RequestMethod.POST)
+	public ResponseEntity<DTOresponse> createStatus(
+			@RequestBody DTOStatus dtoStatus) {
+
+		return statusService.createStatus(dtoStatus.getStatusId(),
+				dtoStatus.getStatus(), dtoStatus.getCreationDate(),
+				dtoStatus.getLastModified(), dtoStatus.getGoalRef());
+
+	}
+
+	@RequestMapping(value = "/getStatus/", method = RequestMethod.GET)
+	public ResponseEntity<DTOresponse> getStatus() {
+		return statusService.getStatus();
+	}
+
+	@RequestMapping(value = "/deleteStatus/", method = RequestMethod.POST)
+	public ResponseEntity<DTOresponse> deleteStatus(
+			@RequestBody DTOStatus dtoStatus) {
+
+		return statusService.deleteStatus(dtoStatus.getStatusId());
+
+	}
+
+	@RequestMapping(value = "/deleteAllStatus/", method = RequestMethod.GET)
+	public ResponseEntity<DTOresponse> deleteAllStatus() {
+
+		return statusService.deleteAllStatus();
+
+	}
+
+	@RequestMapping(value = "/createProject/", method = RequestMethod.POST)
+	public ResponseEntity<DTOresponse> createProject(
+			@RequestBody DTOProject dtoProject) {
+
+		return projectService.createProject(dtoProject.getProjectID(),
+				dtoProject.getName(), dtoProject.getCreationDate(),
+				dtoProject.getDescription(), dtoProject.getVersion(),
+				dtoProject.getgoalRef());
+
+	}
+
+	@RequestMapping(value = "/getProject/", method = RequestMethod.GET)
+	public ResponseEntity<DTOresponse> getproject() {
+		return projectService.getProject();
+	}
+
+	@RequestMapping(value = "/deleteProject/", method = RequestMethod.POST)
+	public ResponseEntity<DTOresponse> deleteProject(
+			@RequestBody DTOProject dtoProject) {
+
+		return projectService.deleteProject(dtoProject.getProjectID());
+
+	}
+
+	@RequestMapping(value = "/deleteAllProject/", method = RequestMethod.GET)
+	public ResponseEntity<DTOresponse> deleteAllProject() {
+
+		return projectService.deleteAllProject();
+
+	}
 }

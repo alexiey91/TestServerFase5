@@ -25,7 +25,7 @@ public class DTOProject  extends DTO{
 	@JsonInclude(Include.NON_NULL)
 	private String version;
 	@JsonInclude(Include.NON_NULL)
-	public ArrayList<Goal> goalsRef;
+	public ArrayList<String> goalRef;
 	
 	
 	public String getName() {
@@ -58,11 +58,11 @@ public class DTOProject  extends DTO{
 	public void setProjectID(String projectID) {
 		this.projectID = projectID;
 	}
-	public ArrayList<Goal> getGoalsRef() {
-		return goalsRef;
+	public ArrayList<String> getgoalRef() {
+		return goalRef;
 	}
-	public void setGoalsRef(ArrayList<Goal> goalsRef) {
-		this.goalsRef = goalsRef;
+	public void setgoalRef(ArrayList<String> goalRef) {
+		this.goalRef = goalRef;
 	}
 	
 

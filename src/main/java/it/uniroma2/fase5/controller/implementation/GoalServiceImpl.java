@@ -29,7 +29,7 @@ public class GoalServiceImpl implements GoalService {
 	StrategyRepository strategyRepository;
 	
 	@Override
-	public ResponseEntity<DTOresponse> createGoal(String gaolId, int version,
+	public ResponseEntity<DTOresponse> createGoal(String goalId, int version,
 			String creationDate, String lastModified, String timeFrame,
 			String object, int magnitude, String focus, String costraint,
 			String organizationalScope, String description,
@@ -52,7 +52,7 @@ public class GoalServiceImpl implements GoalService {
 		if (temp2.size()==0){
 			return new ResponseEntity<DTOresponse>(new DTOresponse(),HttpStatus.BAD_REQUEST);
 		}		
-		Goal goal= new Goal(gaolId,version,creationDate,lastModified,timeFrame,
+		Goal goal= new Goal(goalId,version,creationDate,lastModified,timeFrame,
 				 object, magnitude,focus,costraint,
 				organizationalScope, description,temp,temp2);
 		goalRepository.save(goal);
@@ -64,12 +64,12 @@ public class GoalServiceImpl implements GoalService {
 	}
 
 	@Override
-	public ResponseEntity<DTOresponse> createGoal(String gaolId, int version,
+	public ResponseEntity<DTOresponse> createGoal(String goalId, int version,
 			String creationDate, String lastModified, String timeFrame,
 			String object, int magnitude, String focus, String costraint,
 			String organizationalScope, String description) {
 		// TODO Auto-generated method stub
-		Goal goal = new Goal(gaolId,version,
+		Goal goal = new Goal(goalId,version,
 				 creationDate,  lastModified,  timeFrame,
 				 object,  magnitude,  focus,  costraint,
 				 organizationalScope,  description);

@@ -1,6 +1,7 @@
 package it.uniroma2.fase5.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -10,29 +11,32 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Project {
 	
 	@Id
+	//definisce l'id del progetto 
 	private String projectID;
-	
+	//definisce il nome del progetto
 	private String name;
+	//definisce la data di creazione 
 	private String creationDate;
+	//definise la descrizione del progetto
 	private String description;
+	//indica la versione del progetto
 	private String version;
 	
 	@DBRef
-	private ArrayList<Goal> goalsRer;
+	private List<Goal> goalRef;
 	
-	public Project(String projectID, String name, ArrayList<Goal> goalsRer, String version) {
-		this.projectID = projectID;
-		this.name = name;
-		this.goalsRer = goalsRer;
-		this.version = version;
+	
+
+	public Project() {
 	}
 
 	public Project(String projectID, String name, String creationDate, String description,
-			String version, ArrayList<Goal> goalsRer) {
+			String version, List<Goal> goalRef) {
+		super();
 		this.projectID = projectID;
 		this.name = name;
 		this.creationDate = creationDate;
-		this.goalsRer = goalsRer;
+		this.goalRef = goalRef;
 		this.description = description;
 		this.version = version;
 	}
@@ -77,12 +81,12 @@ public class Project {
 		this.version = version;
 	}
 
-	public ArrayList<Goal> getGoalsRer() {
-		return goalsRer;
+	public List<Goal> getgoalRef() {
+		return goalRef;
 	}
 
-	public void setGoalsRer(ArrayList<Goal> goalsRer) {
-		this.goalsRer = goalsRer;
+	public void setgoalRef(ArrayList<Goal> goalRef) {
+		this.goalRef = goalRef;
 	}
 		
 }

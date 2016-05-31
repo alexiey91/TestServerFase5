@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Goal {
 
 	@Id
-	private String gaolId;
+	private String goalId;
 	// indica la versione del goal
 	private int version;
 	// indica la data di creazione
@@ -43,12 +43,12 @@ public class Goal {
 
 	}
 
-	public Goal(String gaolId, int version, String creationDate,
+	public Goal(String goalId, int version, String creationDate,
 			String lastModified, String timeFrame, String object,
 			int magnitude, String focus, String costraint,
 			String organizationalScope, String description) {
 		super();
-		this.gaolId = gaolId;
+		this.goalId = goalId;
 		this.version = version;
 		this.creationDate = creationDate;
 		this.lastModified = lastModified;
@@ -61,12 +61,12 @@ public class Goal {
 		this.description = description;
 	}
 
-	public String getGaolId() {
-		return gaolId;
+	public String getgoalId() {
+		return goalId;
 	}
 
-	public void setGaolId(String gaolId) {
-		this.gaolId = gaolId;
+	public void setgoalId(String goalId) {
+		this.goalId = goalId;
 	}
 
 	public int getVersion() {
@@ -149,13 +149,13 @@ public class Goal {
 		this.description = description;
 	}
 
-	public Goal(String gaolId, int version, String creationDate,
+	public Goal(String goalId, int version, String creationDate,
 			String lastModified, String timeFrame, String object,
 			int magnitude, String focus, String costraint,
 			String organizationalScope, String description,
 			List<MeasurementGoal> measurementRef, List<Strategy> strategyRef) {
 		super();
-		this.gaolId = gaolId;
+		this.goalId = goalId;
 		this.version = version;
 		this.creationDate = creationDate;
 		this.lastModified = lastModified;

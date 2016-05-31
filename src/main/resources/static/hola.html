@@ -3,9 +3,36 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 </head>
 <body>
 	<input type="button" onClick=prova()>
+	
+	<div ng-app="myApp" ng-controller="myCtrl"> 
+
+<p>Today's welcome message is:</p>
+
+<!-- <h1>{{myWelcome}}</h1>  -->
+
+<ul>
+  <li ng-repeat="x in myGoal">
+    {{ x.gaolId +','+ x.description}}
+  </li>
+</ul>
+
+
+</div>
+	
+	
+	<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http.get("http://localhost:8080/getGoals/").then(function (response) {
+      $scope.myGoal = response.data.goals;
+  });
+});
+</script>
+	
 	<script>
 
 var getJSON = function(url, callback) {

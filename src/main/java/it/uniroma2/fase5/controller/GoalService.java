@@ -8,13 +8,13 @@ import org.springframework.http.ResponseEntity;
 
 public interface GoalService {
 
-	ResponseEntity<DTOresponse> createGoal(String gaolId, int version,
+	ResponseEntity<DTOresponse> createGoal(String goalId, int version,
 			String creationDate, String lastModified, String timeFrame,
 			String object, int magnitude, String focus, String costraint,
 			String organizationalScope, String description,
 			List<String> measurementRef, List<String> strategyRef);
 
-	ResponseEntity<DTOresponse> createGoal(String gaolId, int version, String creationDate,
+	ResponseEntity<DTOresponse> createGoal(String goalId, int version, String creationDate,
 			String lastModified, String timeFrame, String object,
 			int magnitude, String focus, String costraint,
 			String organizationalScope, String description);
