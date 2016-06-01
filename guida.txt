@@ -1,9 +1,0 @@
-1) Startare il server ovvero questo progetto con Spring boot che utilizzerà la porta 8080
-2) se si sta su eclipse bisogna cambiare la vista del progetto passando a java2ee
-3)creare una nuova istanza server tomcat per il client da runnare sulla porta 8081
-4) far partire il client
-5) testare il server su broweser http://localhost:8080/getGoals/ (ovviamente stamperà se avete creato dei goal su mongo db
-6) far partire il client su browser  http://localhost:8081/clientFase5/home.html e dovreste vedere la home con una stampa messa a cavolo
-con tutti i goal id e le descrizioni.
-7) se non vedete nulla è perchè c'è un problema di cross origin resource sharing quindi per ora l'ho risolto istallando un plugin CORS su crhome.
-8) se risolvete mi fate un favore :)
