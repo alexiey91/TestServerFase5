@@ -18,18 +18,24 @@ public class DTOMeasurementGoal  extends DTO{
 	@JsonInclude(Include.NON_NULL)
 	private String measurementGoalId;
 	@JsonInclude(Include.NON_NULL)
-	private String description;
+	private String object;
 	@JsonInclude(Include.NON_NULL)
-	private String creationDate;
+    private String purpose;
 	@JsonInclude(Include.NON_NULL)
-	private String lastModified;
+    private String qualityFocus;
 	@JsonInclude(Include.NON_NULL)
-	private String timeFrame;
+    private String viewpoint;
+	@JsonInclude(Include.NON_NULL)
+    private String context;
+	@JsonInclude(Include.NON_NULL)
+    private String creationDate;
+	@JsonInclude(Include.NON_NULL)
+    private String lastModified;
 	@JsonInclude(Include.NON_NULL)
 	private String interpretationModel;
 	@JsonInclude(Include.NON_NULL)
-	private int version;
-	@JsonInclude(Include.NON_NULL)
+    private int version;
+	@JsonInclude(Include.NON_NULL)    
 	public List<String> questionsRef;
 	@JsonInclude(Include.NON_NULL)
 	public List<String> metricsRef;
@@ -40,11 +46,35 @@ public class DTOMeasurementGoal  extends DTO{
 	public void setMeasurementGoalId(String measurementGoalId) {
 		this.measurementGoalId = measurementGoalId;
 	}
-	public String getDescription() {
-		return description;
+	public String getObject() {
+		return object;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setObject(String object) {
+		this.object = object;
+	}
+	public String getPurpose() {
+		return purpose;
+	}
+	public void setPurpose(String purpose) {
+		this.purpose = purpose;
+	}
+	public String getQualityFocus() {
+		return qualityFocus;
+	}
+	public void setQualityFocus(String qualityFocus) {
+		this.qualityFocus = qualityFocus;
+	}
+	public String getViewpoint() {
+		return viewpoint;
+	}
+	public void setViewpoint(String viewpoint) {
+		this.viewpoint = viewpoint;
+	}
+	public String getContext() {
+		return context;
+	}
+	public void setContext(String context) {
+		this.context = context;
 	}
 	public String getCreationDate() {
 		return creationDate;
@@ -57,12 +87,6 @@ public class DTOMeasurementGoal  extends DTO{
 	}
 	public void setLastModified(String lastModified) {
 		this.lastModified = lastModified;
-	}
-	public String getTimeFrame() {
-		return timeFrame;
-	}
-	public void setTimeFrame(String timeFrame) {
-		this.timeFrame = timeFrame;
 	}
 	public List<String> getQuestionsRef() {
 		return questionsRef;

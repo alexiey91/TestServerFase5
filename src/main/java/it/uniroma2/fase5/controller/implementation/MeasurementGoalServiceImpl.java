@@ -28,9 +28,12 @@ public class MeasurementGoalServiceImpl implements MeasurementGoalService {
 	MeasurementGoalRepository measurementGoalRepository;
 	
 	@Override
-	public ResponseEntity<DTOresponse> createMeasurementGoal(String measurementGoalId,String description, String creationDate, String lastModified, String timeFrame, String interpretationModel,int version) {
+	public ResponseEntity<DTOresponse> createMeasurementGoal(String measurementGoalId, String object, String purpose, String qualityFocus,
+			String viewpoint, String context, String creationDate, String lastModified, String interpretationModel,
+			int version) {
 		
-		MeasurementGoal measurementGoal= new MeasurementGoal(measurementGoalId, description, creationDate, lastModified, timeFrame, interpretationModel,version);
+		MeasurementGoal measurementGoal= new MeasurementGoal(measurementGoalId,object, purpose, qualityFocus,
+				viewpoint, context, creationDate, lastModified, interpretationModel, version);
 		measurementGoalRepository.save(measurementGoal);
 				
 		DTOresponse dtoresponse = new DTOresponse();		
@@ -39,7 +42,9 @@ public class MeasurementGoalServiceImpl implements MeasurementGoalService {
 		return response;
 	}
 	@Override
-	public ResponseEntity<DTOresponse> createMeasurementGoal(String measurementGoalId,String description, String creationDate, String lastModified, String timeFrame, String interpretationModel, int version, List<String> questionsRef,List<String> metricsRef) {
+	public ResponseEntity<DTOresponse> createMeasurementGoal(String measurementGoalId, String object, String purpose, String qualityFocus,
+			String viewpoint, String context, String creationDate, String lastModified, String interpretationModel,
+			int version, List<String> questionsRef,List<String> metricsRef) {
 		
 		List<Question> temp= new ArrayList<Question>();
 		List<Metric> temp2= new ArrayList<Metric>();
@@ -58,7 +63,8 @@ public class MeasurementGoalServiceImpl implements MeasurementGoalService {
 		if (temp2.size()==0){
 			return new ResponseEntity<DTOresponse>(new DTOresponse(),HttpStatus.BAD_REQUEST);
 		}		
-		MeasurementGoal measurementGoal= new MeasurementGoal(measurementGoalId, description, creationDate, lastModified, timeFrame,interpretationModel,version,temp,temp2);
+		MeasurementGoal measurementGoal= new MeasurementGoal(measurementGoalId,object, purpose, qualityFocus,
+				viewpoint, context, creationDate, lastModified, interpretationModel, version,temp,temp2);
 		measurementGoalRepository.save(measurementGoal);
 				
 		DTOresponse dtoresponse = new DTOresponse();		

@@ -1,6 +1,5 @@
 package it.uniroma2.fase5.model.rest;
 
-import it.uniroma2.fase5.model.Goal;
 
 import java.util.List;
 

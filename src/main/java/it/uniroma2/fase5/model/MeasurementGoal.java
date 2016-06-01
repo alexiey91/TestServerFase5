@@ -11,12 +11,17 @@ public class MeasurementGoal {
 	
 	@Id
 	private String measurementGoalId;
-   
-    private String description;
+	
+    private String object;//object dell'organizational goal
+    private String purpose;
+    private String qualityFocus;//focus dell'organizational goal
+    private String viewpoint;//organization scope dell'organizational goal
+    private String context;//costraint
+    //private String description;//non necessario
     private String creationDate;
     private String lastModified;
-    private String timeFrame;
-    private String interpretationModel;
+    //private String timeFrame;//non necessario
+    private String interpretationModel;//magnitude + time frame dell'organizational goal 
     private int version;
     @DBRef
     private List<Question> questionsRef;
@@ -27,32 +32,42 @@ public class MeasurementGoal {
 			
 	}
 	
-	public MeasurementGoal(String measurementGoalId, String description, String creationDate, String lastModified,
-			String timeFrame, String interpretationModel, int version) {
+	
+	public MeasurementGoal(String measurementGoalId, String object, String purpose, String qualityFocus,
+			String viewpoint, String context, String creationDate, String lastModified, String interpretationModel,
+			int version) {
 		super();
 		this.measurementGoalId = measurementGoalId;
-		this.description = description;
+		this.object = object;
+		this.purpose = purpose;
+		this.qualityFocus = qualityFocus;
+		this.viewpoint = viewpoint;
+		this.context = context;
 		this.creationDate = creationDate;
 		this.lastModified = lastModified;
-		this.timeFrame = timeFrame;
 		this.interpretationModel = interpretationModel;
 		this.version = version;
 	}
 
-	public MeasurementGoal(String measurementGoalId, String description, String creationDate, String lastModified,
-			String timeFrame, String interpretationModel, int version, List<Question> questionsRef,
-			List<Metric> metricsRef) {
+
+	public MeasurementGoal(String measurementGoalId, String object, String purpose, String qualityFocus,
+			String viewpoint, String context, String creationDate, String lastModified, String interpretationModel,
+			int version, List<Question> questionsRef, List<Metric> metricsRef) {
 		super();
 		this.measurementGoalId = measurementGoalId;
-		this.description = description;
+		this.object = object;
+		this.purpose = purpose;
+		this.qualityFocus = qualityFocus;
+		this.viewpoint = viewpoint;
+		this.context = context;
 		this.creationDate = creationDate;
 		this.lastModified = lastModified;
-		this.timeFrame = timeFrame;
 		this.interpretationModel = interpretationModel;
 		this.version = version;
 		this.questionsRef = questionsRef;
 		this.metricsRef = metricsRef;
 	}
+
 
 	public String getMeasurementGoalId() {
 		return measurementGoalId;
@@ -60,12 +75,7 @@ public class MeasurementGoal {
 	public void setMeasurementGoalId(String measurementGoalId) {
 		this.measurementGoalId = measurementGoalId;
 	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
-		this.description = description;
-	}
+	
 	public String getCreationDate() {
 		return creationDate;
 	}
@@ -78,12 +88,7 @@ public class MeasurementGoal {
 	public void setLastModified(String lastModified) {
 		this.lastModified = lastModified;
 	}
-	public String getTimeFrame() {
-		return timeFrame;
-	}
-	public void setTimeFrame(String timeFrame) {
-		this.timeFrame = timeFrame;
-	}
+	
 	public List<Question> getQuestionsRef() {
 		return questionsRef;
 	}
@@ -110,6 +115,56 @@ public class MeasurementGoal {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+
+
+	public String getObject() {
+		return object;
+	}
+
+
+	public void setObject(String object) {
+		this.object = object;
+	}
+
+
+	public String getPurpose() {
+		return purpose;
+	}
+
+
+	public void setPurpose(String purpose) {
+		this.purpose = purpose;
+	}
+
+
+	public String getQualityFocus() {
+		return qualityFocus;
+	}
+
+
+	public void setQualityFocus(String qualityFocus) {
+		this.qualityFocus = qualityFocus;
+	}
+
+
+	public String getViewpoint() {
+		return viewpoint;
+	}
+
+
+	public void setViewpoint(String viewpoint) {
+		this.viewpoint = viewpoint;
+	}
+
+
+	public String getContext() {
+		return context;
+	}
+
+
+	public void setContext(String context) {
+		this.context = context;
 	}
 	
 }

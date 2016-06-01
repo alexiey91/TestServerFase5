@@ -1,7 +1,5 @@
 package it.uniroma2.fase5.rest;
 
-<<<<<<< HEAD
-=======
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,28 +7,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
->>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
 import it.uniroma2.fase5.controller.GoalService;
 import it.uniroma2.fase5.controller.MeasurementGoalService;
 import it.uniroma2.fase5.controller.MetricService;
 import it.uniroma2.fase5.controller.ProjectService;
 import it.uniroma2.fase5.controller.QuestionService;
-<<<<<<< HEAD
 import it.uniroma2.fase5.controller.StatusService;
-=======
 import it.uniroma2.fase5.controller.RetrospectiveReportService;
->>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
+
 import it.uniroma2.fase5.controller.StrategyService;
 import it.uniroma2.fase5.model.rest.DTOGoal;
 import it.uniroma2.fase5.model.rest.DTOMeasurementGoal;
 import it.uniroma2.fase5.model.rest.DTOMetric;
 import it.uniroma2.fase5.model.rest.DTOProject;
 import it.uniroma2.fase5.model.rest.DTOQuestion;
-<<<<<<< HEAD
+
 import it.uniroma2.fase5.model.rest.DTOStatus;
-=======
+
 import it.uniroma2.fase5.model.rest.DTORetrospectiveReport;
->>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
+
 import it.uniroma2.fase5.model.rest.DTOStrategy;
 import it.uniroma2.fase5.model.rest.DTOresponse;
 
@@ -49,13 +44,11 @@ public class RestPresentation {
 	@Autowired
 	GoalService goalService;
 	@Autowired
-<<<<<<< HEAD
 	StatusService statusService;
 	@Autowired
 	ProjectService projectService;
-=======
+	@Autowired
 	RetrospectiveReportService retrospectiveReportService;
->>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
 
 	@RequestMapping(value = "/getQuestions/", method = RequestMethod.GET)
 	public ResponseEntity<DTOresponse> getQuestions() {
@@ -111,20 +104,26 @@ public class RestPresentation {
 				|| dtoMeasurementGoal.getMetricsRef() == null)
 			return measurementGoalService.createMeasurementGoal(
 					dtoMeasurementGoal.getMeasurementGoalId(),
-					dtoMeasurementGoal.getDescription(),
+					dtoMeasurementGoal.getObject(),
+					dtoMeasurementGoal.getPurpose(),
+					dtoMeasurementGoal.getQualityFocus(),
+					dtoMeasurementGoal.getViewpoint(),
+					dtoMeasurementGoal.getContext(),
 					dtoMeasurementGoal.getCreationDate(),
 					dtoMeasurementGoal.getLastModified(),
-					dtoMeasurementGoal.getTimeFrame(),
 					dtoMeasurementGoal.getInterpretationModel(),
 					dtoMeasurementGoal.getVersion());
 
 		else
 			return measurementGoalService.createMeasurementGoal(
 					dtoMeasurementGoal.getMeasurementGoalId(),
-					dtoMeasurementGoal.getDescription(),
+					dtoMeasurementGoal.getObject(),
+					dtoMeasurementGoal.getPurpose(),
+					dtoMeasurementGoal.getQualityFocus(),
+					dtoMeasurementGoal.getViewpoint(),
+					dtoMeasurementGoal.getContext(),
 					dtoMeasurementGoal.getCreationDate(),
 					dtoMeasurementGoal.getLastModified(),
-					dtoMeasurementGoal.getTimeFrame(),
 					dtoMeasurementGoal.getInterpretationModel(),
 					dtoMeasurementGoal.getVersion(),
 					dtoMeasurementGoal.getQuestionsRef(),
@@ -212,7 +211,6 @@ public class RestPresentation {
 
 	}
 
-<<<<<<< HEAD
 	@RequestMapping(value = "/createStatus/", method = RequestMethod.POST)
 	public ResponseEntity<DTOresponse> createStatus(
 			@RequestBody DTOStatus dtoStatus) {
@@ -273,7 +271,7 @@ public class RestPresentation {
 		return projectService.deleteAllProject();
 
 	}
-=======
+
 	@RequestMapping(value = "/getRetrospectiveReports/", method = RequestMethod.GET)
 	public ResponseEntity<DTOresponse> getRetrospectiveReports() {
 		return retrospectiveReportService.getRetrospectiveReports();
@@ -300,5 +298,4 @@ public class RestPresentation {
 
 	}
 	
->>>>>>> eb29a5a210090d669ab240cc33e3ce62d99c9ffc
 }
